@@ -48,7 +48,7 @@ E-spor Dergi
 
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 200 puanlık backlog bulunmaktadır. En zor kısım fikirleri belirleme kısmı olduğu için ilk sprintin 100 puan olması belirlendi.
 
-- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
+- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır.
 
 Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanlar task açıklaması olanlar user storylere bölünmüştür.
 
