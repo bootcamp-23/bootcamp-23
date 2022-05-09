@@ -60,8 +60,9 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Miro Board'da gözük
 ![Backlog 3]()
 
 - **Ürün Durumu**: Ekran görüntüleri:
-  ![Screenshot 1](https://cdn.discordapp.com/attachments/966611738025926711/973290265487999047/unknown.png)
-  ![Screenshot 2](![image](https://user-images.githubusercontent.com/97029034/167473786-a7dc2199-2e5d-49e7-a9a1-0f9f14f0b2c9.png))
+
+  ![Screenshot 1](https://media.discordapp.net/attachments/966611738025926711/973290265487999047/unknown.png?width=261&height=581)
+  ![Screenshot 2](https://media.discordapp.net/attachments/966611738025926711/973290298245541888/unknown.png?width=261&height=581)
 
 - **Sprint Review**: 
 
