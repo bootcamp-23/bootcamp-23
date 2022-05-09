@@ -52,7 +52,11 @@ E-spor Dergi
 
 Story'ler yapılacak işlere (task'lere) bölünmüştür. Miro Board'da gözüken kırmızı item'lar yapılacak işleri (task) gösterirken, mavi item'lar story'leri temsil etmektedir.
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats]()
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: 
+[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/967850811180851261/unknown.png?width=1224&height=701)
+[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968235024249921636/unknown.png?width=1220&height=701)
+[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968959373529448538/unknown.png?width=1219&height=702)
+[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968986943960514670/unknown.png?width=1216&height=702)
 
 - **Sprint board update**: Sprint board screenshotları: 
 ![Backlog 1]() 
