@@ -1,6 +1,6 @@
 # **Takım İsmi**
 
-YILDIZLAR
+Academy E-sports
 
 # Ürün İle İlgili Bilgiler
 
@@ -36,32 +36,31 @@ E-spor Dergi
 
 ## Product Backlog URL
 
-[Miro Backlog Board]()
+[Asana Backlog Board](https://app.asana.com/0/1202193464631174/board)
 
 ---
 
 # Sprint 1
 
-- **Sprint Notları**: User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
+- **Sprint Notları**: User Story'ler product backlog'ların içine yazıldı backlog'ların açıklama kısmında yazıyor.
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
-- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 380 puanlık backlog bulunmaktadır. 4 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 200 puanlık backlog bulunmaktadır. En zor kısım fikirleri belirleme kısmı olduğu için ilk sprintin 100 puan olması belirlendi.
 
 - **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. 
 
-Story'ler yapılacak işlere (task'lere) bölünmüştür. Miro Board'da gözüken kırmızı item'lar yapılacak işleri (task) gösterirken, mavi item'lar story'leri temsil etmektedir.
+Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanlar task açıklaması olanlar user storylere bölünmüştür.
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: 
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği png olarak Readme'de tarafımızdan paylaşılmaktadır: 
 [Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/967850811180851261/unknown.png?width=1224&height=701)
 [Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968235024249921636/unknown.png?width=1220&height=701)
 [Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968959373529448538/unknown.png?width=1219&height=702)
 [Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968986943960514670/unknown.png?width=1216&height=702)
 
 - **Sprint board update**: Sprint board screenshotları: 
-![Backlog 1]() 
-![Backlog 2]() 
-![Backlog 3]()
+![Backlog 1](https://media.discordapp.net/attachments/966611738025926711/973323848755847228/unknown.png?width=1146&height=701) 
+
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
@@ -69,13 +68,12 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Miro Board'da gözük
   ![Screenshot 2](https://media.discordapp.net/attachments/966611738025926711/973290298245541888/unknown.png?width=261&height=581)
 
 - **Sprint Review**: 
-
+Alınan kararlar: Projede navigation barda olacak sayfalar belirlendi. Yer alacak turnuvalar ve kullanıcı girişi için veritabanı kullanılması karar verildi. Drawer'ın tipi ve fonksiyonları belirlendi.
+Katılımcılar: Zehra Varışlı, Akif Sayhanoğlu, Melih Taşkın, Raşit Özgün, Dilara Aydınlı
 
 - **Sprint Retrospective:**
- 
+ Kodlama için ayrılan saat ve efor arttırılmalı. Toplantılara daha çok gelinmeli.
 
--**Diğer Notlar**:
-- N/A
 
 ---
 
