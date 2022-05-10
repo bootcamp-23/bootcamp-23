@@ -22,7 +22,7 @@ E-spor Dergi
 
 ## Ürün Özellikleri
 
-- Kategorilere göre ierik filtreleme
+- Kategorilere göre içerik filtreleme
 - Aktif ve geçmiş turnuvalar listeleme
 - Sık göz atılan kategoriler listesi
 - Okuma listesi olacak
@@ -43,7 +43,7 @@ E-spor Dergi
 
 # Sprint 1
 
-- **Sprint Notları**: User Story'ler product backlog'ların içine yazıldı backlog'ların açıklama kısmında yazıyor.
+- **Sprint Notları**: User Storylerin pointleri açıklama kısmına yazıldı.
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
