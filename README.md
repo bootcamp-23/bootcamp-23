@@ -37,6 +37,7 @@ E-spor Dergi
 ## Product Backlog URL
 
 [Asana Backlog Board](https://app.asana.com/0/1202193464631174/board)
+[Miro Burndown Charts](https://miro.com/welcomeonboard/cVRrSEVNVzhvbmRrZ25ZYVFpMXpuZ3B3Nmw3eDhmZ2ZwUlpnRFBlaHMxUXg5QzRDaEtsUUZwbG1IOG0zTzdVenwzNDU4NzY0NTI1MDMzNjAxMTI3?share_link_id=718620342345)
 
 ---
 
@@ -60,6 +61,11 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanla
 
 - **Sprint board update**: Sprint board screenshotları: 
 ![Backlog 1](https://media.discordapp.net/attachments/966611738025926711/973323848755847228/unknown.png?width=1146&height=701) 
+
+
+ - **Scrum Template update**: Burndown screenshots:
+ ![Sprint 1](https://user-images.githubusercontent.com/104356905/167633446-8570be93-2196-4a58-bf4b-a602bad835e3.jpg)
+
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
