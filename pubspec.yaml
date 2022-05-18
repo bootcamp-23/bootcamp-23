@@ -86,6 +86,9 @@ flutter:
           - asset: assets/fonts/Sora-Bold.ttf
           - asset: assets/fonts/Sora-Light.ttf
           - asset: assets/fonts/Sora-Medium.ttf
+      - family: OoohBaby
+        fonts:
+          - asset: assets\fonts\OoohBaby-Regular.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
