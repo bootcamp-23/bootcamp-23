@@ -38,6 +38,10 @@ dependencies:
   flutter_zoom_drawer: ^3.0.1
   flutter_riverpod: any
   font_awesome_flutter: ^10.1.0
+  flutter_staggered_animations: any
+  firebase_core: ^1.16.0
+  firebase_auth: ^3.3.17
+  cloud_firestore: ^3.1.15
 
 dev_dependencies:
   flutter_test:
@@ -76,10 +80,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-   -  family: Sora
-      fonts:
-        - asset: assets/fonts/font1/SourceCodePro-Black.ttf
-        - asset: assets/fonts/font1/SourceCodePro-Bold.ttf
+      - family: Sora
+        fonts:
+          - asset: assets/fonts/Sora.ttf
+          - asset: assets/fonts/Sora-Bold.ttf
+          - asset: assets/fonts/Sora-Light.ttf
+          - asset: assets/fonts/Sora-Medium.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

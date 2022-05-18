@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "1023987454059",
+    "project_id": "academyesport-6d086",
+    "storage_bucket": "academyesport-6d086.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023987454059:android:caaaa7a8c534361454612e",
+        "android_client_info": {
+          "package_name": "com.academyesport.dergi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023987454059-8vveife0b8ns79l4o75gsdmkvlp1q1hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBznygDZ_Zu1r5GTkGOMIiNPtfsT1520oM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023987454059-8vveife0b8ns79l4o75gsdmkvlp1q1hb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1023987454059-c6u76o19ms6tohbv7bbkgl5bgjni31qj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yildizlar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023987454059:android:f8b3db4e9ff4053354612e",
+        "android_client_info": {
+          "package_name": "com.example.yildizlar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023987454059-8vveife0b8ns79l4o75gsdmkvlp1q1hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBznygDZ_Zu1r5GTkGOMIiNPtfsT1520oM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023987454059-8vveife0b8ns79l4o75gsdmkvlp1q1hb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1023987454059-c6u76o19ms6tohbv7bbkgl5bgjni31qj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yildizlar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

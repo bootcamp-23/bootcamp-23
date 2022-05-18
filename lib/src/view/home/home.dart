@@ -1,4 +1,3 @@
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
@@ -18,14 +17,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   final drawerController = ZoomDrawerController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body:ZoomDrawer(
+        body: ZoomDrawer(
           controller: drawerController,
+          mainScreenTapClose: true,
+          disableDragGesture: true,
           menuScreen: MenuPageView(),
           mainScreen: HomePage(drawerController: drawerController),
           style: DrawerStyle.defaultStyle,
@@ -47,9 +48,9 @@ class _HomeState extends State<Home> {
   }
 }
 
-
 class HomePage extends StatefulWidget {
   final ZoomDrawerController drawerController;
+
   const HomePage({Key? key, required this.drawerController}) : super(key: key);
 
   @override
@@ -60,8 +61,10 @@ class _HomePageState extends State<HomePage> {
   @override
   int _page = 2;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       bottomNavigationBar: CurvedNavigationBar(
         height: 60,
         animationCurve: Curves.easeOut,
@@ -69,14 +72,29 @@ class _HomePageState extends State<HomePage> {
         index: 2,
         animationDuration: Duration(milliseconds: 300),
         items: [
-          FaIcon(FontAwesomeIcons.shop, color: Colors.white,),
-          FaIcon(FontAwesomeIcons.trophy, color: Colors.white,),
-          FaIcon(FontAwesomeIcons.house, color: Colors.white,),
-          FaIcon(FontAwesomeIcons.medal,color: Colors.white,),
-          FaIcon(FontAwesomeIcons.userNinja, color: Colors.white,),
+          FaIcon(
+            FontAwesomeIcons.shop,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.trophy,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.house,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.medal,
+            color: Colors.white,
+          ),
+          FaIcon(
+            FontAwesomeIcons.userNinja,
+            color: Colors.white,
+          ),
         ],
         color: ThemeColors.mainColor,
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(0, 220, 151, 251),
         onTap: (index) {
           setState(() {
             _page = index;
@@ -85,14 +103,41 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       appBar: AppBar(
-          backgroundColor: ThemeColors.mainColor,
-          title: Text("EsportsAcademy"),
-          leading: IconButton(
-            icon: Icon(Icons.drag_handle),
-            onPressed: () => widget.drawerController.toggle!(),
-          )),
+        backgroundColor: ThemeColors.mainColor,
+        title: _page == 0
+            ? Text(
+                "Dükkan",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )
+            : _page == 1
+                ? Text(
+                    "Turnuvalar",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
+                : _page == 2
+                    ? Text(
+                        "Ana Sayfa",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    : _page == 3
+                        ? Text(
+                            "Skor Tablosu",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        : _page == 4
+                            ? Text(
+                                "Profil",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            : null,
+        centerTitle: false,
+        leading: _page == 2
+            ? IconButton(
+                icon: Icon(Icons.drag_handle),
+                onPressed: () => widget.drawerController.toggle!())
+            : null,
+      ),
       body: pages[_page],
     );
   }
 }
-
