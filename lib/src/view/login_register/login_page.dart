@@ -1,11 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:yildizlar/src/view/home/forgot_password_page.dart';
+import 'package:yildizlar/src/view/home/home.dart';
 
-
+import 'forgot_password_page.dart';
 import 'register_page.dart';
 
 void main() {
@@ -33,6 +34,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<double> _transform;
@@ -125,10 +129,10 @@ class _LoginPageState extends State<LoginPage>
                             height: 160,
                             width: 160,
                           ),
-                          holder("E-mail", Icons.email_outlined, 'Email...',
-                              false, true),
-                          holder("Password", Icons.lock_outline, 'Password...',
-                              true, false),
+                          holder(_emailController, "E-mail",
+                              Icons.email_outlined, 'Email...', false, true),
+                          holder(_passwordController, "Password",
+                              Icons.lock_outline, 'Password...', true, false),
                           Row(
                             children: [
                               Padding(
@@ -136,7 +140,7 @@ class _LoginPageState extends State<LoginPage>
                                 child: ElevatedButton(
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
-                                        _formKey.currentState!.save();
+                                        _signIn();
                                       }
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -146,7 +150,7 @@ class _LoginPageState extends State<LoginPage>
                                             top: 4,
                                             bottom: 4),
                                         primary:
-                                            const Color.fromARGB(255, 179, 106, 214),
+                                            Color.fromARGB(255, 179, 106, 214),
                                         elevation: 20,
                                         shadowColor: Colors.purple),
                                     child: const Text(
@@ -155,10 +159,10 @@ class _LoginPageState extends State<LoginPage>
                                     )),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 170.0),
+                                padding: const EdgeInsets.only(left: 130.0),
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      Navigator.push(
+                                      Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
@@ -188,11 +192,24 @@ class _LoginPageState extends State<LoginPage>
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const ForgotPasswordPage(),
+                                    builder: (context) =>
+                                        const ForgotPasswordPage(),
                                   ));
                             },
                             child: const Text(
                               "Forgot Password",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.purple,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              _signInAnonymously();
+                            },
+                            child: const Text(
+                              "Guest Login",
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.purple,
@@ -213,8 +230,8 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
-  Widget holder(String y, IconData icon, String hintText, bool isPassword,
-      bool isUsername) {
+  Widget holder(controller, String y, IconData icon, String hintText,
+      bool isPassword, bool isUsername) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -225,6 +242,7 @@ class _LoginPageState extends State<LoginPage>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType:
@@ -248,6 +266,35 @@ class _LoginPageState extends State<LoginPage>
         },
       ),
     );
+  }
+
+  void _signIn() async {
+    try {
+      final UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
+      final User? user = userCredential.user;
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Hoşgeldin ${user?.email}")));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Home()));
+    } on FirebaseAuthException catch (er) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(er.toString())));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+        e.toString(),
+      )));
+      debugPrint(e.toString());
+    }
+  }
+
+  void _signInAnonymously() async {
+    await _auth.signInAnonymously();
+    Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Home()));
   }
 }
 

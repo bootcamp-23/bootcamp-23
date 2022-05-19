@@ -9,7 +9,7 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
@@ -21,7 +21,7 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       routes: Routes,
       theme: ThemeData(fontFamily: 'Sora'),
-      initialRoute: ref.read(firebaseAuthProvider).currentUser != null ? "home" : "home",
+      initialRoute: ref.read(firebaseAuthProvider).currentUser != null ? "loginPage" : "home",
     );
   }
 }

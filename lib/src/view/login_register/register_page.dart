@@ -1,17 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'dart:ui';
-import 'package:fluttertoast/fluttertoast.dart';
-
-import 'register_page.dart';
+import 'login_page.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login UI with fadeOut animation',
-      home: ForgotPasswordPage(),
+      home: RegisterPage(),
     ),
   );
   SystemChrome.setSystemUIOverlayStyle(
@@ -21,25 +18,32 @@ void main() {
   );
 }
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<ForgotPasswordPage>
+class _RegisterPageState extends State<RegisterPage>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<double> _transform;
+  late bool _success;
+  late String _message;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmController =
+      TextEditingController();
 
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -92,7 +96,7 @@ class _LoginPageState extends State<ForgotPasswordPage>
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Color.fromARGB(255, 219, 151, 251),
+                      Color.fromARGB(255, 220, 151, 251),
                       Color.fromARGB(255, 65, 26, 82),
                     ],
                   ),
@@ -123,17 +127,96 @@ class _LoginPageState extends State<ForgotPasswordPage>
                             height: 160,
                             width: 160,
                           ),
-                          holder("E-mail", Icons.email_outlined, 'Email...',
-                              false, true),
+                          component1(_emailController, "E-mail...",
+                              Icons.email_outlined, 'Email...', false, true),
+                          Container(
+                            height: size.width / 8,
+                            width: size.width / 1.22,
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.only(right: size.width / 30),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: TextFormField(
+                              controller: _passwordController,
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(.8)),
+                              obscureText: true,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.lock_outline,
+                                    color: Colors.purple.withOpacity(.7),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.purple)),
+                                  labelText: "Password...",
+                                  labelStyle:
+                                      const TextStyle(color: Colors.purple),
+                                  border: const OutlineInputBorder()),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Boş bırakmayınız";
+                                }
+                                if (value != _passwordConfirmController.text) {
+                                  return "Şifreler eşleşmiyor";
+                                } else {
+                                  return null;
+                                }
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: size.width / 8,
+                            width: size.width / 1.22,
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.only(right: size.width / 30),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: TextFormField(
+                              controller: _passwordConfirmController,
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(.8)),
+                              obscureText: true,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.lock_outline,
+                                    color: Colors.purple.withOpacity(.7),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.purple)),
+                                  labelText: "Password...",
+                                  labelStyle:
+                                      const TextStyle(color: Colors.purple),
+                                  border: const OutlineInputBorder()),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Boş bırakmayınız";
+                                }
+                                if (value != _passwordController.text) {
+                                  return "Şifreler eşleşmiyor";
+                                } else {
+                                  return null;
+                                }
+                              },
+                            ),
+                          ),
                           Row(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 50.0),
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        _formKey.currentState!.save();
-                                      }
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginPage(),
+                                          ));
                                     },
                                     style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.only(
@@ -151,15 +234,12 @@ class _LoginPageState extends State<ForgotPasswordPage>
                                     )),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 170.0),
+                                padding: const EdgeInsets.only(left: 130.0),
                                 child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                RegisterPage(),
-                                          ));
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        _register();
+                                      }
                                     },
                                     style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.only(
@@ -192,8 +272,8 @@ class _LoginPageState extends State<ForgotPasswordPage>
     );
   }
 
-  Widget holder(String y, IconData icon, String hintText, bool isPassword,
-      bool isUsername) {
+  Widget component1(controller, String y, IconData icon, String hintText,
+      bool isPassword, bool isUsername) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -204,6 +284,7 @@ class _LoginPageState extends State<ForgotPasswordPage>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
+        controller: controller,
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType:
@@ -227,6 +308,41 @@ class _LoginPageState extends State<ForgotPasswordPage>
         },
       ),
     );
+  }
+
+  void _register() async {
+    try {
+      final User? user = (await _auth.createUserWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text))
+          .user;
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Kayıt Başarılı Merhaba ${user?.email}")));
+
+      if (user != null) {
+        setState(() {
+        _message = "Merhaba, ${user.uid}";
+        _success = true;
+          ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(_message)));
+        });
+      } else {
+        setState(() {
+        _message = "Hata oldu";
+        _success = true;
+          ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(_message)));
+        });
+      }
+    } on FirebaseAuthException catch (er) {
+      setState(() {
+      _message = er.message!;
+      _success = false;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(_message)));
+      });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
 

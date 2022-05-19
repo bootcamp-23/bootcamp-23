@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yildizlar/src/view/login_register/login_page.dart';
 
 class ProfilePageView extends StatefulWidget {
   const ProfilePageView({Key? key}) : super(key: key);
@@ -10,6 +11,18 @@ class ProfilePageView extends StatefulWidget {
 class _ProfilePageViewState extends State<ProfilePageView> {
   @override
   Widget build(BuildContext context) {
-    return Container(height: 50, width: 50, color: Colors.blue);
+    return Scaffold(
+      body: Center(
+          child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginPage(),
+              ));
+        },
+        child: Text("Giriş"),
+      )),
+    );
   }
 }

@@ -1,14 +1,18 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
+import 'dart:ui';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import 'login_page.dart';
+import 'register_page.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login UI with fadeOut animation',
-      home: RegisterPage(),
+      home: ForgotPasswordPage(),
     ),
   );
   SystemChrome.setSystemUIOverlayStyle(
@@ -18,14 +22,15 @@ void main() {
   );
 }
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderStateMixin {
+class _LoginPageState extends State<ForgotPasswordPage>
+    with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   late AnimationController _controller;
   late Animation<double> _opacity;
@@ -35,7 +40,7 @@ class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderSt
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -73,7 +78,8 @@ class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderSt
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          elevation: 0, systemOverlayStyle: SystemUiOverlayStyle.light,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: ScrollConfiguration(
           behavior: MyBehavior(),
@@ -87,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderSt
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                       Color.fromARGB(255, 220, 151, 251),
+                      Color.fromARGB(255, 219, 151, 251),
                       Color.fromARGB(255, 65, 26, 82),
                     ],
                   ),
@@ -113,52 +119,65 @@ class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderSt
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           const SizedBox(),
-                          Image.asset("assets/images/gamepad.png", height: 160, width: 160, ),
-                          component1("Username...",Icons.account_circle_outlined,
-                              'User name...', false, false),
-                          component1("E-mail...",
-                              Icons.email_outlined, 'Email...', false, true),
-                          component1("Password...",
-                              Icons.lock_outline, 'Password...', true, false),
+                          Image.asset(
+                            "assets/images/gamepad.png",
+                            height: 160,
+                            width: 160,
+                          ),
+                          holder("E-mail", Icons.email_outlined, 'Email...',
+                              false, true),
                           Row(
-                            children: 
-                               [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 50.0),
-                              child: ElevatedButton(
-                                 onPressed: () {
-                                   Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage(),));
-                                 },
-                                 style: ElevatedButton.styleFrom(
-                                   padding: const EdgeInsets.only(left: 20, right: 20, top: 4, bottom: 4),
-                                   primary: Color.fromARGB(255, 179, 106, 214),
-                                   elevation: 20,
-                                   shadowColor: Colors.purple
-                                 ),
-                                 child: const Text("Login",
-                                 style: TextStyle(fontSize: 30),)
-                                 ),
-                            ),
-                                Padding(
-                              padding: const EdgeInsets.only(left: 170.0),
-                              child: ElevatedButton(
-                                 onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                            _formKey.currentState!.save();
-                                            
-                                          }
-                                 },
-                                 style: ElevatedButton.styleFrom(
-                                   padding: const EdgeInsets.only(left: 20, right: 20, top: 4, bottom: 4),
-                                   primary: Color.fromARGB(255, 179, 106, 214),
-                                   elevation: 20,
-                                   shadowColor: Colors.purple
-                                 ),
-                                 child: const Text("Register",
-                                 style: TextStyle(fontSize: 30),)
-                                 ),
-                            ),
-                             ],
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 50.0),
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.only(
+                                            left: 20,
+                                            right: 20,
+                                            top: 4,
+                                            bottom: 4),
+                                        primary:
+                                            Color.fromARGB(255, 179, 106, 214),
+                                        elevation: 20,
+                                        shadowColor: Colors.purple),
+                                    child: const Text(
+                                      "Submit",
+                                      style: TextStyle(fontSize: 30),
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 170.0),
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                LoginPage(),
+                                          ));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.only(
+                                            left: 20,
+                                            right: 20,
+                                            top: 4,
+                                            bottom: 4),
+                                        primary:
+                                            Color.fromARGB(255, 179, 106, 214),
+                                        elevation: 20,
+                                        shadowColor: Colors.purple),
+                                    child: const Text(
+                                      "Back",
+                                      style: TextStyle(fontSize: 30),
+                                    )),
+                              ),
+                            ],
                           ),
                           const SizedBox(),
                         ],
@@ -174,8 +193,8 @@ class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderSt
     );
   }
 
-  Widget component1(
-    String y,IconData icon, String hintText, bool isPassword, bool isUsername) {
+  Widget holder(String y, IconData icon, String hintText, bool isPassword,
+      bool isUsername) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -188,7 +207,8 @@ class _RegisterPageState extends State<RegisterPage> with SingleTickerProviderSt
       child: TextFormField(
         style: TextStyle(color: Colors.black.withOpacity(.8)),
         obscureText: isPassword,
-        keyboardType: isUsername ? TextInputType.emailAddress : TextInputType.text,
+        keyboardType:
+            isUsername ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
             prefixIcon: Icon(
               icon,
@@ -221,9 +241,3 @@ class MyBehavior extends ScrollBehavior {
     return child;
   }
 }
-
-
-
-
-
-      
