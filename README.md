@@ -104,6 +104,7 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanla
 
  - **Scrum Template update**: Burndown screenshots:
   <br>
+  
  ![Sprint 2](https://media.discordapp.net/attachments/966611738025926713/978047685540061184/unknown.png)
 
 
