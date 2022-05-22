@@ -4,7 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:yildizlar/src/core/services/auth_service.dart';
 import 'package:yildizlar/src/view/home/home.dart';
+import 'package:inheritable/inheritable.dart';
 
 import 'forgot_password_page.dart';
 import 'register_page.dart';
@@ -77,113 +79,137 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Form(
-      key: _formKey,
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-        ),
-        body: ScrollConfiguration(
-          behavior: MyBehavior(),
-          child: SingleChildScrollView(
-            child: SizedBox(
-              height: size.height,
-              child: Container(
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color.fromARGB(255, 219, 151, 251),
-                      Color.fromARGB(255, 65, 26, 82),
-                    ],
-                  ),
+    double _h = size.height;
+    double _w = size.width;
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+      ),
+      body: ScrollConfiguration(
+        behavior: MyBehavior(),
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: size.height,
+            child: Container(
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromARGB(255, 219, 151, 251),
+                    Color.fromARGB(255, 65, 26, 82),
+                  ],
                 ),
-                child: Opacity(
-                  opacity: _opacity.value,
-                  child: Transform.scale(
-                    scale: _transform.value,
-                    child: Container(
-                      width: size.width * .9,
-                      height: size.width * 1.1,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(.1),
-                            blurRadius: 90,
-                          ),
-                        ],
-                      ),
+              ),
+              child: Opacity(
+                opacity: _opacity.value,
+                child: Transform.scale(
+                  scale: _transform.value,
+                  child: Container(
+                    width: size.width * .9,
+                    height: size.width * 1.2,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(.1),
+                          blurRadius: 90,
+                        ),
+                      ],
+                    ),
+                    child: Form(
+                      key: _formKey,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        
                         children: [
                           const SizedBox(),
-                          Image.asset(
-                            "assets/images/gamepad.png",
-                            height: 160,
-                            width: 160,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+                            child: Image.asset(
+                              "assets/images/gamepad.png",
+                              height: _w * 0.20,
+                              width: _h * 0.20,
+                            ),
                           ),
                           holder(_emailController, "E-mail",
                               Icons.email_outlined, 'Email...', false, true),
-                          holder(_passwordController, "Password",
-                              Icons.lock_outline, 'Password...', true, false),
+                         
+                          Padding(
+                            padding: const EdgeInsets.only(left: 4,top: 10.0),
+                            child: holder(_passwordController, "Password",
+                                Icons.lock_outline, 'Password...', true, false),
+                          ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50.0),
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        _signIn();
+                              ElevatedButton(
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      try {
+                                        AuthenticationService(_auth).signIn(
+                                            _emailController.text,
+                                            _passwordController.text);
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Home()));
+                                      } catch (e) {
+                                        print(e);
                                       }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.only(
-                                            left: 20,
-                                            right: 20,
-                                            top: 4,
-                                            bottom: 4),
-                                        primary:
-                                            Color.fromARGB(255, 179, 106, 214),
-                                        elevation: 20,
-                                        shadowColor: Colors.purple),
-                                    child: const Text(
-                                      "Login",
-                                      style: TextStyle(fontSize: 30),
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 130.0),
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                RegisterPage(),
-                                          ));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.only(
-                                            left: 20,
-                                            right: 20,
-                                            top: 4,
-                                            bottom: 4),
-                                        primary:
-                                            Color.fromARGB(255, 179, 106, 214),
-                                        elevation: 20,
-                                        shadowColor: Colors.purple),
-                                    child: const Text(
-                                      "Register",
-                                      style: TextStyle(fontSize: 30),
-                                    )),
-                              ),
+                                    }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.025,
+                                          vertical: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.020),
+                                      primary:
+                                          const Color.fromARGB(255, 179, 106, 214),
+                                      elevation: 20,
+                                      shadowColor: Colors.purple),
+                                  child: const Text(
+                                    "Login",
+                                    style: TextStyle(fontSize: 20),
+                                  )),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterPage(),
+                                        ));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.025,
+                                          vertical: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.020),
+                                      primary:
+                                          Color.fromARGB(255, 179, 106, 214),
+                                      elevation: 20,
+                                      shadowColor: Colors.purple),
+                                  child: const Text(
+                                    "Register",
+                                    style: TextStyle(fontSize: 20),
+                                  )),
                             ],
                           ),
                           const SizedBox(),
@@ -206,7 +232,7 @@ class _LoginPageState extends State<LoginPage>
                           ),
                           TextButton(
                             onPressed: () {
-                              _signInAnonymously();
+                              AuthenticationService(_auth).signGuest();
                             },
                             child: const Text(
                               "Guest Login",
@@ -268,34 +294,34 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
-  void _signIn() async {
-    try {
-      final UserCredential userCredential =
-          await _auth.signInWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text);
-      final User? user = userCredential.user;
+  // void _signIn() async {
+  //   try {
+  //     final UserCredential userCredential =
+  //         await _auth.signInWithEmailAndPassword(
+  //             email: _emailController.text, password: _passwordController.text);
+  //     final User? user = userCredential.user;
 
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Hoşgeldin ${user?.email}")));
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home()));
-    } on FirebaseAuthException catch (er) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(er.toString())));
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-        e.toString(),
-      )));
-      debugPrint(e.toString());
-    }
-  }
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text("Hoşgeldin ${user?.email}")));
+  //     Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => Home()));
+  //   } on FirebaseAuthException catch (er) {
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text(er.toString())));
+  //   } catch (e) {
+  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //         content: Text(
+  //       e.toString(),
+  //     )));
+  //     debugPrint(e.toString());
+  //   }
+  // }
 
-  void _signInAnonymously() async {
-    await _auth.signInAnonymously();
-    Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home()));
-  }
+  // void _signInAnonymously() async {
+  //   await _auth.signInAnonymously();
+  //   Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => Home()));
+  // }
 }
 
 class MyBehavior extends ScrollBehavior {
@@ -307,4 +333,12 @@ class MyBehavior extends ScrollBehavior {
   ) {
     return child;
   }
+}
+
+double getScreenWidth(BuildContext context) {
+  return MediaQuery.of(context).size.width;
+}
+
+double getScreenHeight(BuildContext context) {
+  return MediaQuery.of(context).size.height;
 }

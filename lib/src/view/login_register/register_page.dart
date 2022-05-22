@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:yildizlar/src/core/services/auth_service.dart';
 import 'login_page.dart';
 
 void main() {
@@ -107,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage>
                     scale: _transform.value,
                     child: Container(
                       width: size.width * .9,
-                      height: size.width * 1.1,
+                      height: size.width * 1.2,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15),
@@ -119,13 +120,13 @@ class _RegisterPageState extends State<RegisterPage>
                         ],
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const SizedBox(),
                           Image.asset(
                             "assets/images/gamepad.png",
-                            height: 160,
-                            width: 160,
+                           height: size.width * 0.20,
+                              width: size.height * 0.20,
                           ),
                           component1(_emailController, "E-mail...",
                               Icons.email_outlined, 'Email...', false, true),
@@ -206,56 +207,59 @@ class _RegisterPageState extends State<RegisterPage>
                             ),
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50.0),
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const LoginPage(),
-                                          ));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.only(
-                                            left: 20,
-                                            right: 20,
-                                            top: 4,
-                                            bottom: 4),
-                                        primary:
-                                            Color.fromARGB(255, 179, 106, 214),
-                                        elevation: 20,
-                                        shadowColor: Colors.purple),
-                                    child: const Text(
-                                      "Login",
-                                      style: TextStyle(fontSize: 30),
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 130.0),
-                                child: ElevatedButton(
-                                    onPressed: () async {
-                                      if (_formKey.currentState!.validate()) {
-                                        _register();
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.only(
-                                            left: 20,
-                                            right: 20,
-                                            top: 4,
-                                            bottom: 4),
-                                        primary:
-                                            Color.fromARGB(255, 179, 106, 214),
-                                        elevation: 20,
-                                        shadowColor: Colors.purple),
-                                    child: const Text(
-                                      "Register",
-                                      style: TextStyle(fontSize: 30),
-                                    )),
-                              ),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginPage(),
+                                        ));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      padding:  EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.025,
+                                          vertical: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.020),
+                                      primary:
+                                          Color.fromARGB(255, 179, 106, 214),
+                                      elevation: 20,
+                                      shadowColor: Colors.purple),
+                                  child: const Text(
+                                    "Login",
+                                    style: TextStyle(fontSize: 20),
+                                  )),
+                              ElevatedButton(
+                                  onPressed: () async {
+                                    if (_formKey.currentState!.validate()) {
+                                      AuthenticationService(_auth).signUp(_emailController.text,_passwordController.text);
+                                    }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      padding:  EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.025,
+                                          vertical: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.020),
+                                      primary:
+                                          Color.fromARGB(255, 179, 106, 214),
+                                      elevation: 20,
+                                      shadowColor: Colors.purple),
+                                  child: const Text(
+                                    "Register",
+                                    style: TextStyle(fontSize: 20),
+                                  )),
                             ],
                           ),
                           const SizedBox(),
@@ -310,40 +314,40 @@ class _RegisterPageState extends State<RegisterPage>
     );
   }
 
-  void _register() async {
-    try {
-      final User? user = (await _auth.createUserWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text))
-          .user;
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Kayıt Başarılı Merhaba ${user?.email}")));
+  // void _register() async {
+  //   try {
+  //     final User? user = (await _auth.createUserWithEmailAndPassword(
+  //             email: _emailController.text, password: _passwordController.text))
+  //         .user;
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text("Kayıt Başarılı Merhaba ${user?.email}")));
 
-      if (user != null) {
-        setState(() {
-        _message = "Merhaba, ${user.uid}";
-        _success = true;
-          ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(_message)));
-        });
-      } else {
-        setState(() {
-        _message = "Hata oldu";
-        _success = true;
-          ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(_message)));
-        });
-      }
-    } on FirebaseAuthException catch (er) {
-      setState(() {
-      _message = er.message!;
-      _success = false;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(_message)));
-      });
-    } catch (e) {
-      print(e.toString());
-    }
-  }
+  //     if (user != null) {
+  //       setState(() {
+  //       _message = "Merhaba, ${user.uid}";
+  //       _success = true;
+  //         ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text(_message)));
+  //       });
+  //     } else {
+  //       setState(() {
+  //       _message = "Hata oldu";
+  //       _success = true;
+  //         ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text(_message)));
+  //       });
+  //     }
+  //   } on FirebaseAuthException catch (er) {
+  //     setState(() {
+  //     _message = er.message!;
+  //     _success = false;
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text(_message)));
+  //     });
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 }
 
 class MyBehavior extends ScrollBehavior {
