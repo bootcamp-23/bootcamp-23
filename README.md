@@ -47,17 +47,13 @@ E-spor Dergi
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
-- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 200 puanlık backlog bulunmaktadır. En zor kısım fikirleri belirleme kısmı olduğu için ilk sprintin 100 puan olması belirlendi.
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. En zor kısım fikirleri belirleme kısmı olduğu için ilk sprintin 100 puan olması belirlendi.
 
 - **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır.
 
 Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanlar task açıklaması olanlar user storylere bölünmüştür.
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği png olarak Readme'de tarafımızdan paylaşılmaktadır: 
-[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/967850811180851261/unknown.png?width=1224&height=701)
-[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968235024249921636/unknown.png?width=1220&height=701)
-[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968959373529448538/unknown.png?width=1219&height=702)
-[Sprint 1 Daily Scrum Chats](https://media.discordapp.net/attachments/966611738025926711/968986943960514670/unknown.png?width=1216&height=702)
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği png olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://1drv.ms/w/s!Aqlw3VUhsZ5YmF5LdmgY4WGrIC4J?e=lXtIOa)
 
 - **Sprint board update**: Sprint board screenshotları: 
 ![Backlog 1](https://media.discordapp.net/attachments/966611738025926711/973323848755847228/unknown.png?width=1146&height=701) 
@@ -86,6 +82,42 @@ Katılımcılar: Zehra Varışlı, Akif Sayhanoğlu, Melih Taşkın, Raşit Özg
 
 # Sprint 2
 
+- **Sprint Notları**: User Storylerin pointleri açıklama kısmına yazıldı.
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. Veritabanı ve giriş ekranı sayfaları ile uğraşıldığı için bu sprintin 130 puan olması karar verildi
+
+- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır.
+
+Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanlar task açıklaması olanlar user storylere bölünmüştür.
+
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği png olarak Readme'de tarafımızdan paylaşılmaktadır: 
+
+
+- **Sprint board update**: Sprint board screenshotları: 
+![Backlog 2](https://media.discordapp.net/attachments/966611738025926711/973323848755847228/unknown.png?width=1146&height=701) 
+
+
+ - **Scrum Template update**: Burndown screenshots:
+ ![Sprint 2](https://media.discordapp.net/attachments/966611738025926713/978047685540061184/unknown.png)
+
+
+
+
+- **Ürün Durumu**: Ekran görüntüleri:
+
+  ![Screenshot 1](https://media.discordapp.net/attachments/966611738025926713/978045588996239411/WhatsApp_Image_2022-05-22_at_9.37.25_PM.jpeg?width=323&height=701)
+  ![Screenshot 2](https://media.discordapp.net/attachments/966611738025926713/978045589302419546/WhatsApp_Image_2022-05-22_at_9.37.25_PM_1.jpeg?width=323&height=701)
+  ![Screenshot 3](https://media.discordapp.net/attachments/966611738025926713/978045589558296637/WhatsApp_Image_2022-05-22_at_9.37.25_PM_2.jpeg?width=323&height=701)
+  ![Screenshot 4](https://media.discordapp.net/attachments/966611738025926713/978045589759594526/WhatsApp_Image_2022-05-22_at_9.37.25_PM_3.jpeg?width=323&height=701)
+
+- **Sprint Review**: 
+Alınan kararlar: Haberler ve profiller için veritabanı halledilecek ve sayfalar tamamen halledilecek 
+Katılımcılar: Zehra Varışlı, Akif Sayhanoğlu, Melih Taşkın, Raşit Özgün, Dilara Aydınlı
+
+- **Sprint Retrospective:**
+ Kodlama için ayrılan saat ve efor arttırılmalı. Toplantılara gelinmeli.
 
 ---
 
