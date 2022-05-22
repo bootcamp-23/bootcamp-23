@@ -60,6 +60,7 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Açıklamasız olanla
 
 
  - **Scrum Template update**: Burndown screenshots:
+ <br/>
  ![Sprint 1](https://user-images.githubusercontent.com/104356905/167639090-9371279c-9185-499a-8a93-d5cebc1b39fc.jpg)
 
 
