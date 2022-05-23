@@ -87,7 +87,7 @@ Katılımcılar: Zehra Varışlı, Akif Sayhanoğlu, Melih Taşkın, Raşit Özg
 
 - **Sprint Notları**: User Storylerin pointleri açıklama kısmına yazıldı.
 
-- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+- **Sprint içinde tamamlanması tahmin edilen puan**: 130 Puan
 
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 350 puanlık backlog bulunmaktadır. Veritabanı ve giriş ekranı sayfaları ile uğraşıldığı için bu sprintin 130 puan olması karar verildi
 
