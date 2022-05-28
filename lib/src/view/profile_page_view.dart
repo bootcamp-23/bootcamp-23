@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:yildizlar/src/view/login_register/login_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:yildizlar/src/core/services/auth_service.dart';
 
-class ProfilePageView extends StatefulWidget {
-  const ProfilePageView({Key? key}) : super(key: key);
+
+class ProfilePageView extends ConsumerWidget {
+  const ProfilePageView
+({Key? key}) : super(key: key);
 
   @override
-  State<ProfilePageView> createState() => _ProfilePageViewState();
-}
-
-class _ProfilePageViewState extends State<ProfilePageView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginPage(),
-              ));
-        },
-        child: Text("Giriş"),
-      )),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          FutureBuilder(future: ref.read(firebaseAuthProvider).currentUser, builder: (context, snapshot) if(snapshot.connectionState == ConnectionState.done),)
+        ],
+      ));
   }
 }
