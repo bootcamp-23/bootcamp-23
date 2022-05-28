@@ -6,7 +6,7 @@ import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:yildizlar/src/core/services/auth_service.dart';
 import 'package:yildizlar/src/view/home/home.dart';
-import 'package:inheritable/inheritable.dart';
+
 
 import 'forgot_password_page.dart';
 import 'register_page.dart';
