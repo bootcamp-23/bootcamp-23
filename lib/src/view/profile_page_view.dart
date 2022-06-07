@@ -12,7 +12,7 @@ class ProfilePageView extends ConsumerWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          FutureBuilder(future: ref.read(firebaseAuthProvider).currentUser, builder: (context, snapshot) if(snapshot.connectionState == ConnectionState.done),)
+            
         ],
       ));
   }
