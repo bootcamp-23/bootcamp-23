@@ -3,10 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class firestoreService extends ChangeNotifier {
+class FirestoreService extends ChangeNotifier {
   final FirebaseFirestore _firebaseFirestore;
 
-  firestoreService(this._firebaseFirestore);
+  FirestoreService(this._firebaseFirestore);
 
   dynamic data;
 

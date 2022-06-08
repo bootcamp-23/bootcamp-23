@@ -143,23 +143,23 @@ class _LoginPageState extends State<ForgotPasswordPage>
                                             top: 4,
                                             bottom: 4),
                                         primary:
-                                            Color.fromARGB(255, 179, 106, 214),
+                                            const Color.fromARGB(255, 179, 106, 214),
                                         elevation: 20,
                                         shadowColor: Colors.purple),
                                     child: const Text(
                                       "Submit",
-                                      style: TextStyle(fontSize: 30),
+                                      style: TextStyle(fontSize: 20),
                                     )),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 170.0),
+                                padding: const EdgeInsets.only(left: 40.0),
                                 child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                LoginPage(),
+                                                const LoginPage(),
                                           ));
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -169,12 +169,12 @@ class _LoginPageState extends State<ForgotPasswordPage>
                                             top: 4,
                                             bottom: 4),
                                         primary:
-                                            Color.fromARGB(255, 179, 106, 214),
+                                            const Color.fromARGB(255, 179, 106, 214),
                                         elevation: 20,
                                         shadowColor: Colors.purple),
                                     child: const Text(
                                       "Back",
-                                      style: TextStyle(fontSize: 30),
+                                      style: TextStyle(fontSize: 20),
                                     )),
                               ),
                             ],

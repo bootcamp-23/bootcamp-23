@@ -11,6 +11,9 @@ class MenuPageView extends StatefulWidget {
 class _MenuPageViewState extends State<MenuPageView> {
   @override
   Widget build(BuildContext context) {
+     Size size = MediaQuery.of(context).size;
+    double _h = size.height;
+    double _w = size.width;
     bool isOpen = false;
     return Scaffold(
         backgroundColor: Colors.white,
@@ -23,13 +26,17 @@ class _MenuPageViewState extends State<MenuPageView> {
               Column(
 
                 children: [
-                Center(
+                 Center(
                     child:
-                    Placeholder(fallbackHeight: 100, fallbackWidth: 100)),
-                SizedBox(
+                    Image.asset(
+                              "assets/images/gamepad.png",
+                              height: _w * 0.20,
+                              width: _h * 0.20,
+                            ),),
+                const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 200,
                   height: 45,
                   child: Text("League Of Legends",
@@ -38,12 +45,12 @@ class _MenuPageViewState extends State<MenuPageView> {
                           fontFamily: 'Sora',
                           fontWeight: FontWeight.normal)),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 200,
                   height: 45,
                   child: Text("Valorant", style: TextStyle(fontSize: 18)),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 200,
                   height: 35,
                   child: Text("Counter Strike", style: TextStyle(fontSize: 18)),
@@ -61,26 +68,26 @@ class _MenuPageViewState extends State<MenuPageView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Other", style: TextStyle(fontSize: 18)),
+                        const Text("Other", style: TextStyle(fontSize: 18)),
                         isOpen
-                            ? Icon(Icons.arrow_drop_down)
-                            : Icon(Icons.arrow_drop_up)
+                            ? const Icon(Icons.arrow_drop_down)
+                            : const Icon(Icons.arrow_drop_up)
                       ],
                     ),
                   ),
                 ),
-                isOpen ? SizedBox() : SizedBox(),
+                isOpen ? const SizedBox() : const SizedBox(),
               ],),
               Column(children: [
-                Divider(color: Colors.black54, thickness: 1),
-                SizedBox(
+                const Divider(color: Colors.black54, thickness: 1),
+                const SizedBox(
                     width: 180,
                     height: 45,
                     child: Text(
                       "Hakkında",
                       style: TextStyle(color: Colors.black),
                     )),
-                SizedBox(
+                const SizedBox(
                     width: 180,
                     height: 35,
                     child: Text(
@@ -91,7 +98,7 @@ class _MenuPageViewState extends State<MenuPageView> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0, bottom: 8),
                   child: Column(
-                    children: [
+                    children: const [
                       SizedBox(
                           width: 180,
                           height: 35,
@@ -109,8 +116,8 @@ class _MenuPageViewState extends State<MenuPageView> {
                     ],
                   ),
                 ),
-                Divider(color: Colors.black54, thickness: 1),
-                SizedBox(
+                const Divider(color: Colors.black54, thickness: 1),
+                const SizedBox(
                     width: 180,
                     height: 35,
                     child: Text(
@@ -119,14 +126,14 @@ class _MenuPageViewState extends State<MenuPageView> {
                     )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     FaIcon(FontAwesomeIcons.instagram),
                     FaIcon(FontAwesomeIcons.twitter),
                     FaIcon(FontAwesomeIcons.youtube),
                     FaIcon(FontAwesomeIcons.twitch)
                   ],
                 ),
-                SizedBox(height: 30,)
+                const SizedBox(height: 30,)
               ],),
 
 

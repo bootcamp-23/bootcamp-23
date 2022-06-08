@@ -155,11 +155,7 @@ class _LoginPageState extends State<LoginPage>
                                         AuthenticationService(_auth).signIn(
                                             _emailController.text,
                                             _passwordController.text);
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const Home()));
+                                        
                                       } catch (e) {
                                         print(e);
                                       }
@@ -294,34 +290,7 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
-  // void _signIn() async {
-  //   try {
-  //     final UserCredential userCredential =
-  //         await _auth.signInWithEmailAndPassword(
-  //             email: _emailController.text, password: _passwordController.text);
-  //     final User? user = userCredential.user;
 
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(SnackBar(content: Text("Hoşgeldin ${user?.email}")));
-  //     Navigator.pushReplacement(
-  //         context, MaterialPageRoute(builder: (context) => Home()));
-  //   } on FirebaseAuthException catch (er) {
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(SnackBar(content: Text(er.toString())));
-  //   } catch (e) {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         content: Text(
-  //       e.toString(),
-  //     )));
-  //     debugPrint(e.toString());
-  //   }
-  // }
-
-  // void _signInAnonymously() async {
-  //   await _auth.signInAnonymously();
-  //   Navigator.pushReplacement(
-  //         context, MaterialPageRoute(builder: (context) => Home()));
-  // }
 }
 
 class MyBehavior extends ScrollBehavior {
@@ -333,12 +302,4 @@ class MyBehavior extends ScrollBehavior {
   ) {
     return child;
   }
-}
-
-double getScreenWidth(BuildContext context) {
-  return MediaQuery.of(context).size.width;
-}
-
-double getScreenHeight(BuildContext context) {
-  return MediaQuery.of(context).size.height;
 }
